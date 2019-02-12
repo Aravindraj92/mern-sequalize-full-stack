@@ -1,16 +1,24 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize');
 
-// Create Schema
-const ItemSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+const sequelize = require('../config/keys');
+
+const Item = sequelize.define('items',{
+    id:{
+        type:Sequelize.INTEGER,
+        autoIncrement:true,
+        allowNull:false,
+        primaryKey:true
+    },
+    name:{
+        type:Sequelize.STRING,
+        allowNull:false
+    }
 });
 
-module.exports = Item = mongoose.model('item', ItemSchema);
+Item.sync().then(result=>{
+    console.log(result)
+}).catch(err =>{
+    //console.log(err)
+});
+
+module.exports = Item;

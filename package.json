@@ -17,7 +17,9 @@
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
     "express": "^4.16.3",
-    "mongoose": "^5.1.6"
+    "mongoose": "^5.1.6",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"

@@ -8,8 +8,7 @@ const Item = require('../../models/Item');
 // @desc    Get All Items
 // @access  Public
 router.get('/', (req, res) => {
-  Item.find()
-    .sort({ date: -1 })
+  Item.findAll()
     .then(items => res.json(items));
 });
 
@@ -29,7 +28,7 @@ router.post('/', (req, res) => {
 // @access  Public
 router.delete('/:id', (req, res) => {
   Item.findById(req.params.id)
-    .then(item => item.remove().then(() => res.json({ success: true })))
+    .then(item => item.destroy().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
 
